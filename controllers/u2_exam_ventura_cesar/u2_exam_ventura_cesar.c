@@ -14,6 +14,7 @@
 #include <webots/motor.h>
 #include <webots/keyboard.h>
 #include <webots/distance_sensor.h>
+#include <webots/differential_wheels.h>
 
 #include <stdio.h>
 #include <math.h>
@@ -36,8 +37,10 @@ int main(int argc, char **argv)
   /* necessary to initialize webots stuff */
              wb_robot_init();
              wb_keyboard_enable(TIME_STEP);
+          
   
              int key;
+          
 
   /*
    * You should declare here WbDeviceTag variables for storing
@@ -50,12 +53,8 @@ int main(int argc, char **argv)
   
    
    
+     
 
-  /* main loop
-   * Perform simulation steps of TIME_STEP milliseconds
-   * and leave the loop when the simulation is over
-   
-   */
     wb_motor_set_position(wheel_righ, INFINITY);
     wb_motor_set_position(wheel_left, INFINITY);
     
@@ -63,7 +62,8 @@ int main(int argc, char **argv)
     WbDeviceTag dist_sensor = wb_robot_get_device("distance_sensor");
     wb_distance_sensor_enable(dist_sensor, TIME_STEP);
     double ds_value;
-  
+    
+
 
     
     
@@ -80,6 +80,8 @@ int main(int argc, char **argv)
       
        ds_value =  wb_distance_sensor_get_value(dist_sensor);
        printf("dist_sensor%lf\n", ds_value);
+       
+    
 
     /*
      * Read the sensors :

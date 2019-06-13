@@ -47,7 +47,7 @@ Robot {
       }
       device [
         PositionSensor {
-          name "encoder1"
+          name "encoder"
         }
         RotationalMotor {
           name "motor_righ"
@@ -120,10 +120,10 @@ Robot {
       name "distance_sensor"
       lookupTable [
         0 0 0
-        0.02 0 0
-        11 1023 0
+        0.04 0 0
+        11 4 0
       ]
-      resolution 1
+      resolution 0.03
     }
   ]
   boundingObject USE G_box
