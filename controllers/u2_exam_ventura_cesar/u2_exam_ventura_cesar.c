@@ -88,13 +88,13 @@ int main(int argc, char **argv)
       
       
        ds_value =  wb_distance_sensor_get_value(dist_sensor);
-       printf("dist_sensor%lf\n", ds_value);
+       printf("dist_sensor    %lf\n", ds_value);
        
        ds_pvalue = wb_position_sensor_get_value(position1);
-       printf("position_sensor1%lf\n", ds_pvalue);
+       printf("position_sensor1    %lf\n", ds_pvalue);
        
        ds_pvalue2 = wb_position_sensor_get_value(position2);
-       printf("position_sensor2%lf\n", ds_pvalue2);
+       printf("position_sensor2    %lf\n", ds_pvalue2);
        
        
        
