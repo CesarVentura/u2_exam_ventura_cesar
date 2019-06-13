@@ -5,4 +5,4 @@ build/release/u2_exam_ventura_cesar.o: u2_exam_ventura_cesar.c \
  /usr/local/webots/include/controller/c/webots/motor.h \
  /usr/local/webots/include/controller/c/webots/keyboard.h \
  /usr/local/webots/include/controller/c/webots/distance_sensor.h \
- /usr/local/webots/include/controller/c/webots/differential_wheels.h
+ /usr/local/webots/include/controller/c/webots/position_sensor.h

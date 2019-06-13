@@ -47,7 +47,7 @@ Robot {
       }
       device [
         PositionSensor {
-          name "encoder"
+          name "velocimetro1"
         }
         RotationalMotor {
           name "motor_righ"
@@ -81,6 +81,9 @@ Robot {
         anchor -0.05 0 -0.06
       }
       device [
+        PositionSensor {
+          name "velocimetro2"
+        }
         RotationalMotor {
           name "motor_left"
           maxTorque 0.4903

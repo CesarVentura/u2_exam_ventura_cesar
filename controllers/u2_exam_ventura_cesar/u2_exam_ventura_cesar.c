@@ -14,7 +14,8 @@
 #include <webots/motor.h>
 #include <webots/keyboard.h>
 #include <webots/distance_sensor.h>
-#include <webots/differential_wheels.h>
+#include <webots/position_sensor.h>
+
 
 #include <stdio.h>
 #include <math.h>
@@ -37,6 +38,7 @@ int main(int argc, char **argv)
   /* necessary to initialize webots stuff */
              wb_robot_init();
              wb_keyboard_enable(TIME_STEP);
+             
           
   
              int key;
@@ -63,7 +65,14 @@ int main(int argc, char **argv)
     wb_distance_sensor_enable(dist_sensor, TIME_STEP);
     double ds_value;
     
+    
+    WbDeviceTag position1 = wb_robot_get_device("velocimetro1");
+    wb_position_sensor_enable(position1, TIME_STEP);
+    double ds_pvalue;
 
+    WbDeviceTag position2 = wb_robot_get_device("velocimetro2");
+    wb_position_sensor_enable(position2, TIME_STEP);
+    double ds_pvalue2;
 
     
     
@@ -80,6 +89,14 @@ int main(int argc, char **argv)
       
        ds_value =  wb_distance_sensor_get_value(dist_sensor);
        printf("dist_sensor%lf\n", ds_value);
+       
+       ds_pvalue = wb_position_sensor_get_value(position1);
+       printf("position_sensor1%lf\n", ds_pvalue);
+       
+       ds_pvalue2 = wb_position_sensor_get_value(position2);
+       printf("position_sensor2%lf\n", ds_pvalue2);
+       
+       
        
     
 
