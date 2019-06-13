@@ -1,0 +1,149 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.9899777126108997 0.1410626486248734 -0.0067422323177104585 6.031229000484661
+  position 0.2638770851124549 0.2961221652565132 1.0267851394843068
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+Robot {
+  translation 0 0.075 0
+  children [
+    DEF G_box Group {
+      children [
+        DEF ROBOD_BODY Shape {
+          appearance PBRAppearance {
+            baseColor 0.6431372549019608 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry DEF G_BODY Box {
+            size 0.25 0.07 0.1
+          }
+        }
+        Transform {
+          translation 0.09 -0.056 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.02
+              }
+            }
+          ]
+        }
+      ]
+    }
+    DEF WHEEL1_JOINT HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.05 0 0.06
+      }
+      device [
+        PositionSensor {
+          name "encoder1"
+        }
+        RotationalMotor {
+          name "motor_righ"
+          maxTorque 0.4903
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation -0.04999822373605682 4.8458500125178175e-06 0.05999992289653539
+        rotation -0.718829933968098 0.49157151990679554 -0.49156990026642455 1.8950918044214538
+        children [
+          DEF SH_WELL_SHApe Shape {
+            appearance PBRAppearance {
+              baseColor 0.9333333333333333 0.9333333333333333 0.9254901960784314
+              roughness 1
+              metalness 0
+            }
+            geometry DEF G_WHEEL Cylinder {
+              height 0.02
+              radius 0.075
+            }
+          }
+        ]
+        boundingObject USE G_WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHELL_2 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.05 0 -0.06
+      }
+      device [
+        RotationalMotor {
+          name "motor_left"
+          maxTorque 0.4903
+        }
+      ]
+      endPoint DEF WHELL2 Solid {
+        translation -0.04964547884711713 -0.0025775977216232955 -0.05998569234335319
+        rotation 0.9865649844458836 0.1178921244248247 0.11309720802873525 1.621132011936765
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9333333333333333 0.9333333333333333 0.9254901960784314
+              roughness 1
+              metalness 0
+            }
+            geometry USE G_WHEEL
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE SH_WELL_SHApe
+        physics Physics {
+        }
+      }
+    }
+    DistanceSensor {
+      translation 0.125 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.9882352941176471 0.9137254901960784 0.30980392156862746
+          }
+          geometry Box {
+            size 0.02 0.01 0.01
+          }
+        }
+      ]
+      name "distance_sensor"
+      lookupTable [
+        0 0 0
+        0.02 0 0
+        11 1023 0
+      ]
+      resolution 1
+    }
+  ]
+  boundingObject USE G_box
+  physics Physics {
+    mass 0.05
+  }
+  controller "u2_wp"
+}
+Solid {
+  translation 0.20999999999999996 0.05 0
+  rotation 1 0 0 6.283185307179586
+  children [
+    DEF D_OBSTACLE Shape {
+      appearance PBRAppearance {
+        baseColor 0.6784313725490196 0.4980392156862745 0.6588235294117647
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  boundingObject USE D_OBSTACLE
+}
